@@ -1,0 +1,25 @@
+body {
+    
+}
+
+.smallButton {
+    /* Button */
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    background-color: white;
+    /* Icon */
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.smallButton:hover {
+    background-color: #eeeeee;
+}
+
+.smallButton:active {
+    background-color: #dddddd;
+}
