@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
+    
     <head>
-        <title>Phrase</title>
+        <title>Phrase 17</title>
         <!-- Stylesheets -->
         <link type="text/css", href="css/styles.css", rel="stylesheet">
     </head>
     
-    <body onload="enableEditMode ();">
-        <!-- The buttons -->
+    <body onload="enableEditMode();">
+        <!-- Quick actions -->
         <div>
             <!-- Formatting -->
-            <button class="smallButton", style="background-image: url(res/bold-icon.png);", onclick="formatText ('bold');"></button>
-            <button class="smallButton", style="background-image: url(res/italic-icon.png);", onclick="formatText ('italic');"></button>
-            <button class="smallButton", style="background-image: url(res/underline-icon.png);", onclick="formatText ('underline');"></button>
-            <button class="smallButton", style="background-image: url(res/strikethrough-icon.png);", onclick="formatText ('strikethrough');"></button>
+            <button class="smallButton", style="background-image: url(res/bold-icon.png);", onclick="formatText('bold');"></button>
+            <button class="smallButton", style="background-image: url(res/italic-icon.png);", onclick="formatText('italic');"></button>
+            <button class="smallButton", style="background-image: url(res/underline-icon.png);", onclick="formatText('underline');"></button>
+            <button class="smallButton", style="background-image: url(res/strikethrough-icon.png);", onclick="formatText('strikethrough');"></button>
             <!-- Alignments -->
-            <button class="smallButton", style="background-image: url(res/alignleft-icon.png);", onclick="formatText ('justifyleft');"></button>
-            <button class="smallButton", style="background-image: url(res/aligncenter-icon.png);", onclick="formatText ('justifycenter');"></button>
-            <button class="smallButton", style="background-image: url(res/alignright-icon.png);", onclick="formatText ('justifyright');"></button>
+            <button class="smallButton", style="background-image: url(res/alignleft-icon.png);", onclick="formatText('justifyleft');"></button>
+            <button class="smallButton", style="background-image: url(res/aligncenter-icon.png);", onclick="formatText('justifycenter');"></button>
+            <button class="smallButton", style="background-image: url(res/alignright-icon.png);", onclick="formatText('justifyright');"></button>
             <!-- Utility -->
-            <button class="smallButton", style="background-image: url(res/undo-icon.png);", onclick="formatText('undo');"></button>
-            <button class="smallButton", style="background-image: url(res/redo-icon.png);", onclick="formatText('redo');"></button>
+            <button class="smallButton", id="undoButton", style="background-image: url(res/noundo-icon.png);", onclick="formatText('undo');" disabled></button>
+            <button class="smallButton", id="redoButton", style="background-image: url(res/noredo-icon.png);", onclick="formatText('redo');" disabled></button>
         </div>
         <div>
             <!-- Fonts -->
@@ -29,31 +30,13 @@
                 <option value="Arial">Arial</option>
             </select>
             <!-- Font Size -->
-            <input type="number", name="fontSize", value="3", min="1", max="7", oninput="formatText('fontSize', this.value);">
+            <input name="fontSize", type="number", min="1", max="7", value="3", oninput="formatText('fontSize', this.value);">
         </div>
         <!-- The textfield -->
-        <iframe id="textField", name="textField", style="width: 500px; height: 500px"></iframe>
+        <iframe id="textField", style="width: 500px; height: 500px"></iframe>
         
-        <script type="text/javascript">
-            function enableEditMode (){
-                textField.document.designMode = "on";
-            }
-            
-            function getHTML (){
-                return textField.document.getElementsByTagName("html")[0].innerHTML;
-            }
-            
-            function formatText (cmd){
-                textField.document.execCommand(cmd, false, null);
-            }
-            
-            function formatText (cmd, arg){
-                textField.document.execCommand(cmd, false, arg);
-            }
-            
-            function changeFontSize (px){
-                // TODO
-            }
-        </script>
+        <!-- Scripts -->
+        <script src="js/index.js"></script>
     </body>
+    
 </html>
