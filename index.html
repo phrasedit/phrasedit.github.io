@@ -7,7 +7,7 @@
         <link type="text/css", href="css/styles.css", rel="stylesheet">
     </head>
     
-    <body onload="enableEditMode();">
+    <body onload="initEditor();">
         <!-- Quick actions -->
         <div>
             <!-- Formatting -->
@@ -29,11 +29,12 @@
                 <option value="Times New Roman">Times New Roman</option>
                 <option value="Arial">Arial</option>
             </select>
-            <!-- Font Size -->
-            <input name="fontSize", type="number", min="1", max="7", value="3", oninput="formatText('fontSize', this.value);">
         </div>
-        <!-- The textfield -->
-        <iframe id="textField", style="width: 500px; height: 500px"></iframe>
+        
+        <!-- Text field -->
+        <p id="textField", contenteditable="true", oninput="onTextEdit();">
+            Edit me!
+        </p>
         
         <!-- Scripts -->
         <script src="js/index.js"></script>

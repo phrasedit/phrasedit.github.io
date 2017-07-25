@@ -23,3 +23,8 @@ body {
 .smallButton:active {
     background-color: #dddddd;
 }
+
+#textField {
+    width: 500px;
+    height: 500px;
+}

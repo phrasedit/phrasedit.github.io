@@ -1,18 +1,14 @@
-/* Prerequisites */
-var textField = document.getElementById("textField").contentDocument;
-var onTextFieldUpdate = function () { "use strict"; };
-
-function enableEditMode() {
+/* Initializer */
+function initEditor() {
     "use strict";
-    textField.designMode = "on";
-    textField.addEventListener("keyup",  onTextFieldUpdate, false);
+    
 }
 
 /* GUI */
 function updateIcons() {
     "use strict";
     /* Undo button */
-    if (textField.queryCommandEnabled("undo")) {
+    if (document.queryCommandEnabled("undo")) {
         document.getElementById("undoButton").disabled = false;
         document.getElementById("undoButton").style.backgroundImage = "url('res/undo-icon.png')";
     } else {
@@ -20,7 +16,7 @@ function updateIcons() {
         document.getElementById("undoButton").style.backgroundImage = "url('res/noundo-icon.png')";
     }
     /* Redo button */
-    if (textField.queryCommandEnabled("redo")) {
+    if (document.queryCommandEnabled("redo")) {
         document.getElementById("redoButton").disabled = false;
         document.getElementById("redoButton").style.backgroundImage = "url('res/redo-icon.png')";
     } else {
@@ -32,31 +28,26 @@ function updateIcons() {
 /* Formatting */
 function formatText(cmd) {
     "use strict";
-    if (textField.execCommand(cmd, false, null)) {
+    if (document.execCommand(cmd, false, null)) {
         updateIcons();
     }
 }
-            
+
 function formatText(cmd, arg) {
     "use strict";
-    if (textField.execCommand(cmd, false, arg)) {
+    if (document.execCommand(cmd, false, arg)) {
         updateIcons();
     }
 }
 
-function setFontSize(px) {
-    "use strict";
-    // TODO
-}
-
-/* Events */
-onTextFieldUpdate = function () {
+/* Callback events */
+function onTextEdit() {
     "use strict";
     updateIcons();
-};
+}
 
 /* Output */
 function getHTML() {
     "use strict";
-    return textField.getElementsByTagName("html")[0].outerHTML;
+    document.getElementById("textField").textContent = document.getElementById("textField").innerHTML;
 }
